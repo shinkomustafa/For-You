@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Khayrani ✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts background */
+        .hearts-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float 15s infinite linear;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .header:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            color: #764ba2;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        .secret-message {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .secret-message:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+        }
+
+        .secret-content {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.1em;
+            line-height: 1.6;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .secret-content.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .click-hint {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .encouragement-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .hidden-message {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            color: #764ba2;
+            font-weight: 600;
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        .age-gap-joke {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+            font-size: 1.1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .age-gap-joke::after {
+            content: '👴';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            opacity: 0.3;
+        }
+
+        .progress-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            border-radius: 15px;
+            transition: width 2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 10px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .milestone {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .virtual-hug {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            font-size: 8em;
+            pointer-events: none;
+            z-index: 1000;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .virtual-hug.show {
+            transform: translate(-50%, -50%) scale(1);
+            animation: hugPulse 1s ease infinite alternate;
+        }
+
+        @keyframes hugPulse {
+            from { transform: translate(-50%, -50%) scale(1); }
+            to { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .footer {
+            margin-top: 40px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9em;
+        }
+
+        .typing-effect {
+            border-right: 3px solid #764ba2;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            display: inline-block;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #764ba2; }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .header { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="hearts"></div>
+    
+    <div class="virtual-hug" id="virtualHug">🤗</div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Hey Khayrani ✨</h1>
+            <p class="subtitle">This is your personal hype station</p>
+        </div>
+
+        <div class="secret-message" onclick="revealSecret()">
+            <h2>🤫 A Secret for You</h2>
+            <p class="click-hint">(Click to reveal something special)</p>
+            <div class="secret-content" id="secretContent">
+                <p>Remember that bot where we first talked for 3 hours without getting bored?</p>
+                <p><strong>I made that bot.</strong></p>
+                <p>Yes, I was technically your creator before I became your... well, you know. 😏</p>
+                <p>Best three hours I ever coded for. 💜</p>
+            </div>
+        </div>
+
+        <div class="age-gap-joke">
+            <p><strong>Fun Fact:</strong> I'm 6 years older, which means I have 6 more years of experience in:</p>
+            <p>✓ Procrastination mastery (so you don't have to)<br>
+               ✓ Stress management (sharing my wisdom)<br>
+               ✓ Knowing that you're going to absolutely CRUSH this semester</p>
+        </div>
+
+        <div class="progress-section">
+            <h2 style="color: #764ba2; margin-bottom: 15px;">📚 Foundation Finish Line</h2>
+            <p style="color: #666; margin-bottom: 20px;">You're in Week 2 of your final semester!</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">0%</div>
+            </div>
+            <div class="milestone">
+                <span>Start</span>
+                <span>Almost There!</span>
+                <span>Bachelor Life 🎓</span>
+            </div>
+            <button class="btn" onclick="updateProgress()">Update My Progress</button>
+        </div>
+
+        <h2 style="color: white; margin: 30px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Click for Encouragement 💪</h2>
+        
+        <div class="encouragement-section">
+            <div class="card" onclick="showMessage(this, 'You survived Week 1! Week 2 is just Week 1 with better coffee. ☕')">
+                <div class="card-icon">📖</div>
+                <h3>Study Stress?</h3>
+                <p>Click if assignments are piling up</p>
+                <div class="hidden-message"></div>
+            </div>
+
+            <div class="card" onclick="showMessage(this, 'Bachelor degree is just Foundation with more fancy words. You\'ve got this! 🎓')">
+                <div class="card-icon">🎓</div>
+                <h3>Bachelor Nerves?</h3>
+                <p>Click if future seems scary</p>
+                <div class="hidden-message"></div>
+            </div>
+
+            <div class="card" onclick="showMessage(this, 'You chatted with a stranger (me 😎) for 3 hours straight. That social battery is POWERFUL.')">
+                <div class="card-icon">💬</div>
+                <h3>Social Drain?</h3>
+                <p>Click if people are exhausting</p>
+                <div class="hidden-message"></div>
+            </div>
+
+            <div class="card" onclick="showMessage(this, '6 years ago I was exactly where you are. Now look at me - making websites for cute girls! Progress! 😂')">
+                <div class="card-icon">⏰</div>
+                <h3>Time Pressure?</h3>
+                <p>Click if clock is ticking loud</p>
+                <div class="hidden-message"></div>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.95); padding: 30px; border-radius: 20px; margin: 30px 0;">
+            <h2 style="color: #764ba2; margin-bottom: 20px;">Emergency Support</h2>
+            <p style="color: #666; margin-bottom: 20px;">Having a rough moment? I got you.</p>
+            <button class="btn" onclick="sendHug()">Send Virtual Hug 🤗</button>
+            <button class="btn" onclick="showCompliment()" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">Random Compliment 💝</button>
+        </div>
+
+        <div class="footer">
+            <p>Made with 💜 by someone who thinks you're pretty amazing</p>
+            <p style="margin-top: 10px; font-size: 0.8em;">(And who definitely didn't spend too much time coding this instead of sleeping)</p>
+        </div>
+    </div>
+
+    <script>
+        // Generate floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts');
+            const heartSymbols = ['💜', '💖', '💕', '💗', '💝', '✨'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 20000);
+            }, 1000);
+        }
+
+        // Secret reveal
+        function revealSecret() {
+            const content = document.getElementById('secretContent');
+            content.classList.toggle('show');
+        }
+
+        // Progress bar animation
+        let progress = 10;
+        function updateProgress() {
+            const fill = document.getElementById('progressFill');
+            progress += 10;
+            if (progress > 100) progress = 10;
+            fill.style.width = progress + '%';
+            fill.textContent = progress + '%';
+            
+            if (progress === 100) {
+                fill.textContent = 'Ready for Bachelor! 🎓';
+                setTimeout(() => {
+                    alert('Khayrani, you\'re going to do AMAZING in your Bachelor! 🌟');
+                }, 500);
+            }
+        }
+
+        // Show hidden messages
+        function showMessage(card, message) {
+            const hiddenDiv = card.querySelector('.hidden-message');
+            hiddenDiv.textContent = message;
+            hiddenDiv.style.display = 'block';
+            
+            // Hide other messages
+            document.querySelectorAll('.hidden-message').forEach(div => {
+                if (div !== hiddenDiv) div.style.display = 'none';
+            });
+        }
+
+        // Virtual hug
+        function sendHug() {
+            const hug = document.getElementById('virtualHug');
+            hug.classList.add('show');
+            setTimeout(() => {
+                hug.classList.remove('show');
+            }, 2000);
+        }
+
+        // Random compliments
+        const compliments = [
+            "You're smarter than you think, and definitely smarter than my code! 🧠",
+            "If surviving that 3-hour chat with me doesn't prove you're patient, nothing will! 😂",
+            "You're about to finish foundation like the absolute legend you are! 🔥",
+            "Your future Bachelor degree is lucky to have you incoming! 💎",
+            "6 years younger and already catching up to my wisdom? Impressive. 😎",
+            "You make 'stressed' look 'dressed to impress'! 👗"
+        ];
+
+        function showCompliment() {
+            const randomCompliment = compliments[Math.floor(Math.random() * compliments.length)];
+            alert(randomCompliment);
+        }
+
+        // Initialize
+        window.onload = () => {
+            createHearts();
+            // Animate progress bar on load
+            setTimeout(() => {
+                document.getElementById('progressFill').style.width = '15%';
+                document.getElementById('progressFill').textContent = '15%';
+            }, 500);
+        };
+
+        // Easter egg: Konami code for secret message
+        let keys = [];
+        const konami = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba';
+        
+        document.addEventListener('keydown', (e) => {
+            keys.push(e.key);
+            keys = keys.slice(-10);
+            if (keys.join('') === konami) {
+                alert('🎮 Cheat Code Activated: Khayrani is the best thing that ever happened to my code! 💜');
+            }
+        });
+    </script>
+</body>
+</html>
